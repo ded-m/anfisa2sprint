@@ -11,8 +11,8 @@ class Category(PublishedModel):
         verbose_name='Порядок отображения')
 
     class Meta:
-        verbose_name = 'категория'
-        verbose_name_plural = 'Категория'
+        verbose_name = 'Категории'
+        verbose_name_plural = 'Категории'
 
     def __str__(self) -> str:
         return self.title
@@ -23,7 +23,7 @@ class Topping(PublishedModel):
     slug = models.SlugField(max_length=64, unique=True, verbose_name='Слаг')
 
     class Meta:
-        verbose_name = 'топпинги'
+        verbose_name = 'Топпинги'
         verbose_name_plural = 'Топпинги'
 
     def __str__(self) -> str:
@@ -31,10 +31,14 @@ class Topping(PublishedModel):
 
 
 class Wrapper(PublishedModel):
-    title = models.CharField(max_length=256, verbose_name='Название')
+    title = models.CharField(
+        max_length=256,
+        verbose_name='Название',
+        help_text='Уникальное название обёртки, не более 256 символов')
+    
 
     class Meta:
-        verbose_name = 'обёртки'
+        verbose_name = 'Обёртки'
         verbose_name_plural = 'Обёртки'
 
     def __str__(self) -> str:
@@ -59,11 +63,11 @@ class IceCream(PublishedModel):
         verbose_name='Категория'
     )
     toppings = models.ManyToManyField(Topping,
-                                      verbose_name='Топпинг')
+                                      verbose_name='Топпинги')
     is_on_main = models.BooleanField(default=False, verbose_name='На главную')
 
     class Meta:
-        verbose_name = 'мороженое'
+        verbose_name = 'Мороженое'
         verbose_name_plural = 'Мороженое'
 
     def __str__(self) -> str:
