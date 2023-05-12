@@ -11,7 +11,7 @@ class Category(PublishedModel):
         verbose_name='Порядок отображения')
 
     class Meta:
-        verbose_name = 'Категории'
+        verbose_name = 'категория'
         verbose_name_plural = 'Категории'
 
     def __str__(self) -> str:
@@ -34,8 +34,7 @@ class Wrapper(PublishedModel):
     title = models.CharField(
         max_length=256,
         verbose_name='Название',
-        help_text='Уникальное название обёртки, не более 256 символов')
-    
+        help_text='Уникальное название обёртки, не более 256 символов')  
 
     class Meta:
         verbose_name = 'Обёртки'
